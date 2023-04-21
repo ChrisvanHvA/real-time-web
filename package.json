@@ -1,0 +1,44 @@
+{
+    "name": "beasties",
+    "version": "1.0.0",
+    "description": "my real time web app",
+    "main": "server.js",
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.1.1",
+        "@fortawesome/free-solid-svg-icons": "^6.1.1",
+        "@fortawesome/react-fontawesome": "^0.1.18",
+        "basic-auth": "^2.0.1",
+        "ejs": "^3.1.7",
+        "express": "^4.18.2",
+        "express-static": "^1.2.6",
+        "mime-types": "^2.1.35",
+        "moment": "^2.29.4",
+        "passport": "^0.6.0",
+        "pdfmake": "^0.2.5",
+        "socket.io": "^4.6.1",
+        "tsscmp": "^1.0.6"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.22"
+    },
+    "scripts": {
+        "test": "npm start",
+        "start": "node server",
+        "dev": "nodemon server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/laibaaac/virtual-human.git"
+    },
+    "keywords": [
+        "express",
+        "routing"
+    ],
+    "author": "Laiba Choudhry",
+    "co-owner": "Chris Gabriel |||",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/laibaaac/virtual-human/issues"
+    },
+    "homepage": "https://github.com/laibaaac/virtual-human#readme"
+}
