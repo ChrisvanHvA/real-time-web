@@ -3,7 +3,10 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const formatMessage = require('./utils/messages');
-const {userJoin, getCurrentUser} = require('./utils/users');
+const {
+    userJoin, getCurrentUser, userLeave,
+    getRoomUsers } = require('./utils/users');
+
 
 const app = express();
 const server = http.createServer(app);
@@ -21,6 +24,10 @@ io.on('connection', socket => {
         socket.emit('message', formatMessage(botname,'kom maar lekker chillen makker!'));
 
         socket.broadcast.to(user.room).emit('message', formatMessage(botname,`beestje ${user.username} is aanwezig!`));
+        io.to(user.room).emit('roomUsers', {
+            room: user.room,
+            users:getRoomUsers(user.room)
+    });
     });
 
 
@@ -32,7 +39,16 @@ socket.on('chatMessage', (msg)=> {
 });
 
 socket.on('disconnect', () => {
-    io.emit('message', formatMessage(botname,'een beestje is het bos ingerend'))
+   
+    const user = userLeave(socket.id);
+    if(user) {
+        io.to(user.room).emit(
+            'message', formatMessage(botname,`het beestje ${user.username} is het bos ingerend`));
+            io.to(user.room).emit('roomUsers', {
+                room: user.room,
+                users:getRoomUsers(user.room)
+        });
+    }
 });
 
 });

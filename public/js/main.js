@@ -1,35 +1,99 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
+const roomName = document.getElementById('room-name');
+const userList = document.getElementById('users');
 
-const { username, room} = Qs.parse(location.search, {
-    ignoreQueryPrefix: true
+// Get username and room from URL
+const { username, room } = Qs.parse(location.search, {
+  ignoreQueryPrefix: true,
 });
-
 
 const socket = io();
 
-socket.emit('joinRoom', {username, room});
+// Join chatroom
+socket.emit('joinRoom', { username, room });
 
-socket.on('message', message => {
-    console.log(message);
-    outputMessage(message);
-chatMessages.scrollTop = chatMessages.scrollHeight;
+// Get room and users
+socket.on('roomUsers', ({ room, users }) => {
+  outputRoomName(room);
+  outputUsers(users);
 });
 
-chatForm.addEventListener('submit', (e) =>{
-    e.preventDefault();
-    const msg =e.target.elements.msg.value
-    socket.emit('chatMessage', msg);
-    e.target.elements.msg.value = '';
-    e.target.elements.msg.focus();
+// Message from server
+socket.on('message', (message) => {
+  console.log(message);
+  outputMessage(message);
+
+  // Scroll down
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
+// Message submit
+chatForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Get message text
+  let msg = e.target.elements.msg.value;
+
+  msg = msg.trim();
+
+  if (!msg) {
+    return false;
+  }
+
+  // Emit message to server
+  socket.emit('chatMessage', msg);
+
+  // Clear input
+  e.target.elements.msg.value = '';
+  e.target.elements.msg.focus();
+});
+
+// Output message to DOM
 function outputMessage(message) {
-    const div = document.createElement('div');
-    div.classList.add('message');
-    div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
-    <p class="text">
-     ${message.text}
-    </p>`;
-    document.querySelector('.chat-messages').appendChild(div);
+  const div = document.createElement('div');
+  div.classList.add('message');
+  const p = document.createElement('p');
+  p.classList.add('meta');
+  p.innerText = message.username;
+  p.innerHTML += `<span>${message.time}</span>`;
+  div.appendChild(p);
+  const para = document.createElement('p');
+  para.classList.add('text');
+  para.innerText = message.text;
+  div.appendChild(para);
+  document.querySelector('.chat-messages').appendChild(div);
 }
+
+// Add room name to DOM
+function outputRoomName(room) {
+  roomName.innerText = room;
+}
+
+// Add users to DOM
+function outputUsers(users) {
+  userList.innerHTML = '';
+  users.forEach((user) => {
+    const li = document.createElement('li');
+    
+    li.innerHTML = `<img src="https://i.pinimg.com/736x/d7/7f/f9/d77ff9ceb27d06353cab3db955a189d6.jpg"> <p>stinky `+ user.username + `</p>`;
+    userList.appendChild(li);
+    
+  });
+  addleave()
+}
+function addleave() {
+    const leave = document.createElement('li');
+    leave.innerHTML = ` <a href="index.html" class="leavebtn">Leave Room</a>`
+    userList.appendChild(leave);
+}
+
+
+//Prompt the user before leave chat room
+document.getElementById('leave-btn').addEventListener('click', () => {
+  const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
+  if (leaveRoom) {
+    window.location = '../index.html';
+  } else {
+  }
+});
