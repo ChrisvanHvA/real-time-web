@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Reality Goals';
+    src: url('fonts/realitygoals-owe7d.eot');
+    src: url('fonts/realitygoals-owe7d.eot?#iefix') format('embedded-opentype'),
+         url('fonts/realitygoals-owe7d.woff2') format('woff2'),
+         url('fonts/realitygoals-owe7d.woff') format('woff'),
+         url('fonts/realitygoals-owe7d.ttf')  format('truetype'),
+         url('fonts/realitygoals-owe7d.svg#Reality Goals') format('svg');
+}

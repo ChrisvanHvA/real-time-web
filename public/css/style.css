@@ -1,5 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-
+@font-face {
+    font-family: 'Reality Goals';
+    src: url('/fonts/realitygoals-owe7d.eot');
+    src: url('/fonts/realitygoals-owe7d.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/realitygoals-owe7d.woff2') format('woff2'),
+         url('/fonts/realitygoals-owe7d.woff') format('woff'),
+         url('/fonts/realitygoals-owe7d.ttf')  format('truetype'),
+         url('/fonts/realitygoals-owe7d.svg#Reality Goals') format('svg');
+}
 :root {
 	--dark-color-a: #892727b5;
 	--dark-color-b: #53af618d;
@@ -15,12 +22,21 @@
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
+	font-family: 'Reality Goals';
+	font-size: 20px;
 	overflow: hidden; /* Hide scrollbars */
 
 }
 
+section.roomname h1, h2 {
+	text-align: center;
+	color: white;
+	font-weight: lighter;
+	filter: drop-shadow(0px 0px 20px #0ba6ff6d);
+}
+section.roomname h2 {
+	font-size: 7em;
+}
 .bgimage {
 	position:absolute;
 	width: 100vw;
@@ -42,17 +58,17 @@ align-items: center;
 ul.userimages li {
 	text-align: center;
 	color: white;
-padding: 1em;
+padding: 0.5em;
 
 }
 ul.userimages li p {
 	font-size: 1.5em;
-	font-weight: bold;
+
 	
 }
 ul.userimages li img {
-width: 7em;
-height: 7em;
+width: 6em;
+height: 6em;
 border-radius: 50%;
 border: 3px solid rgb(255, 255, 255);
 }
@@ -65,7 +81,7 @@ ul.userimages li:last-of-type {
 	background: rgba(180, 20, 20, 0.63);
 	color: white;
 	border: 2px solid rgb(106, 3, 3);
-	font-weight: bold;
+
 
 	border-radius: 0.3em;
 	font-size: 20px;
@@ -78,11 +94,14 @@ a {
 
 .btn {
 	cursor: pointer;
-	padding: 5px 15px;
-	background: rgb(50, 157, 31);
+	padding: 10px 25px;
+	background: rgb(87, 203, 67);
 	color: black;
 	border: 0;
-	font-size: 17px;
+	font-size: 20px;
+	font-family: reality goals;
+	font-weight: lighter;
+	border-radius: 0.5em;
 }
 
 /* Chat Page */
@@ -99,6 +118,7 @@ a {
 }
 
 .chat-header {
+
 	background: var(--dark-color-a);
 	color: #fff;
 	border-top-left-radius: 5px;
@@ -112,6 +132,8 @@ a {
 .chat-main {
 	display: grid;
 	grid-template-columns:  3fr 1fr;
+
+
 }
 
 
@@ -122,8 +144,13 @@ a {
 
 .chat-messages {
 	padding: 30px;
-	max-height: 500px;
+	min-height: 400px;
+	max-height: 400px;
 	overflow-y: scroll;
+	color: rgb(9, 112, 0);
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	
 }
 ::-webkit-scrollbar {
 	width: 10px;
@@ -139,7 +166,7 @@ a {
 
 .chat-messages .message .meta {
 	font-size: 15px;
-	font-weight: bold;
+
 	color: black;
 	opacity: 0.7;
 	margin-bottom: 7px;
@@ -149,20 +176,38 @@ a {
 	color: #7d87d2;
 }
 
+.message {
+	color: rgb(0, 205, 10);
+}
+.message.me {
+	color: red;
+}
 .chat-form-container {
-	padding: 30px 310px;
+	width: 1100px;
+	max-width: 100%;
+
+
+border-radius: 1em;
+	margin: 30px auto;
 	background-color: var(--dark-color-a);
+
 }
 
 .chat-form-container form {
 	display: flex;
+padding: 3em 1em 3em 1em;
+	margin: 1em;
+
 }
 
 .chat-form-container input[type='text'] {
-	font-size: 16px;
+	font-size: 20px;
 	padding: 5px;
 	height: 40px;
 	flex: 1;
+	font-family: 'Reality Goals';
+border-radius: 0.5em;
+margin-right: 1em;
 }
 
 /* Join Page */

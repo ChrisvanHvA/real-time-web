@@ -3,6 +3,7 @@ const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 
+
 // Get username and room from URL
 const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
@@ -22,6 +23,7 @@ socket.on('roomUsers', ({ room, users }) => {
 // Message from server
 socket.on('message', (message) => {
   console.log(message);
+  
   outputMessage(message);
 
   // Scroll down
@@ -48,21 +50,35 @@ chatForm.addEventListener('submit', (e) => {
   e.target.elements.msg.value = '';
   e.target.elements.msg.focus();
 });
-
+// 
 // Output message to DOM
 function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
+
+  console.log(message);
+
   const p = document.createElement('p');
   p.classList.add('meta');
-  p.innerText = message.username;
-  p.innerHTML += `<span>${message.time}</span>`;
+
+  p.innerText = message.messageObject.username;
+  p.innerHTML += `<span>${message.messageObject.time}</span>`;
   div.appendChild(p);
+
   const para = document.createElement('p');
   para.classList.add('text');
-  para.innerText = message.text;
+  para.innerText = message.messageObject.text;
+
   div.appendChild(para);
   document.querySelector('.chat-messages').appendChild(div);
+
+  btn = document.querySelector('.btn');
+
+  btn.onclick = function(){
+  const fff = document.querySelector(".message");
+   fff.classList.add('me');
+    
+  }
 }
 
 // Add room name to DOM
@@ -84,16 +100,8 @@ function outputUsers(users) {
 }
 function addleave() {
     const leave = document.createElement('li');
-    leave.innerHTML = ` <a href="index.html" class="leavebtn">Leave Room</a>`
+    leave.innerHTML = ` <a href="index.html" id="leavebtn" class="leavebtn">Leave Room</a>`
     userList.appendChild(leave);
 }
 
 
-//Prompt the user before leave chat room
-document.getElementById('leave-btn').addEventListener('click', () => {
-  const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
-  if (leaveRoom) {
-    window.location = '../index.html';
-  } else {
-  }
-});

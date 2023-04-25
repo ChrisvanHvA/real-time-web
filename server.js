@@ -15,15 +15,19 @@ const io = socketio(server);
 const botname = "bernard boom";
 
 io.on('connection', socket => {
+
+    let currentUser;
+
     socket.on('joinRoom', ({username, room }) => {
 
         const user = userJoin(socket.id, username, room);
         socket.join(user.room);
 
+        currentUser = username;
 
-        socket.emit('message', formatMessage(botname,'kom maar lekker chillen makker!'));
+        socket.emit('message',  { currentUser: currentUser, messageObject:  formatMessage(botname,'kom maar lekker chillen makker!')});
 
-        socket.broadcast.to(user.room).emit('message', formatMessage(botname,`beestje ${user.username} is aanwezig!`));
+        socket.broadcast.to(user.room).emit('message', { currentUser: currentUser, messageObject: formatMessage(botname,`beestje ${user.username} is aanwezig!`)});
         io.to(user.room).emit('roomUsers', {
             room: user.room,
             users:getRoomUsers(user.room)
@@ -35,7 +39,7 @@ io.on('connection', socket => {
 socket.on('chatMessage', (msg)=> {
  const user = getCurrentUser(socket.id);
  
-    io.to(user.room).emit('message', formatMessage(user.username, msg));
+    io.to(user.room).emit('message', { currentUser: user, messageObject: formatMessage(user.username, msg)});
 });
 
 socket.on('disconnect', () => {
