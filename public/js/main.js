@@ -1,21 +1,56 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
+
 const userList = document.getElementById('users');
 
 
 // Get username and room from URL
-const { username, room } = Qs.parse(location.search, {
+let { username, room, beast} = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
+function checkbeast() {
+  
+  // if (beast == 'cat') {
+  //   beast = 'lief poesje '
+    
+  // }
+  // else if (beast == 'dog') {
+  //   beast = 'klein hondje '
+    
+  // }
+  // else if (beast == 'bear') {
+  //   beast = 'brommende beer '
+    
+  // }
+  // else if (beast == 'deer') {
+  //   beast = 'huppelend hertje'
+  // }
+  //   else if (beast === undefined) {
+  //     beast = 'de wijze'
+  // }
+  switch(beast) {
+    case 'bear':    beast = 'brommende beer '
+    break;
+    case 'dog':    beast = 'klein hondje '
+    break;
+    case 'cat':    beast = 'lief poesje '
+    break;
+    case 'deer':    beast = 'huppelend hertje '
+    break;
+    case 'wizard':    beast = 'de wijze, sterke, machtige en onverslaanbare '
+    break;
+  }
+}
+checkbeast();
 const socket = io();
 
 // Join chatroom
-socket.emit('joinRoom', { username, room });
+socket.emit('joinRoom', { username, room, beast });
 
 // Get room and users
-socket.on('roomUsers', ({ room, users }) => {
+socket.on('roomUsers', ({ room, users, beast}) => {
   outputRoomName(room);
   outputUsers(users);
 });
@@ -61,8 +96,17 @@ function outputMessage(message) {
   const p = document.createElement('p');
   p.classList.add('meta');
 
-  p.innerText = message.messageObject.username;
+  if  (message.currentUser.beast == undefined) {
+    p.innerText = message.messageObject.username;
+    p.innerHTML += `<span>${message.messageObject.time}
+    </span>`;
+   }
+
+ else {
+  p.innerText = message.currentUser.beast + " " +message.messageObject.username;
   p.innerHTML += `<span>${message.messageObject.time}</span>`;
+ }
+
   div.appendChild(p);
 
   const para = document.createElement('p');
@@ -72,14 +116,9 @@ function outputMessage(message) {
   div.appendChild(para);
   document.querySelector('.chat-messages').appendChild(div);
 
-  btn = document.querySelector('.btn');
 
-  btn.onclick = function(){
-  const fff = document.querySelector(".message");
-   fff.classList.add('me');
-    
-  }
 }
+
 
 // Add room name to DOM
 function outputRoomName(room) {
@@ -92,7 +131,7 @@ function outputUsers(users) {
   users.forEach((user) => {
     const li = document.createElement('li');
     
-    li.innerHTML = `<img src="https://i.pinimg.com/736x/d7/7f/f9/d77ff9ceb27d06353cab3db955a189d6.jpg"> <p>stinky `+ user.username + `</p>`;
+    li.innerHTML = `<img src="https://i.pinimg.com/736x/d7/7f/f9/d77ff9ceb27d06353cab3db955a189d6.jpg"> <p>` + user.beast + `</p><p>` + user.username + `</p>`;
     userList.appendChild(li);
     
   });
@@ -105,3 +144,32 @@ function addleave() {
 }
 
 
+document.getElementById("catbutton").addEventListener("click", load_pic);
+
+  async function load_pic() {
+
+    const url = 'https://cataas.com/cat'
+
+    const options = {
+        method: "GET"
+    }
+
+    let response = await fetch(url, options)
+
+    if (response.status === 200) {
+        
+        const imageBlob = await response.blob()
+        const imageObjectURL = URL.createObjectURL(imageBlob);
+
+        const image = document.createElement('img')
+        image.src = imageObjectURL
+       
+        const container = document.querySelector('.chat-messages')
+        container.append(image)
+   
+    }
+    else {
+        console.log("HTTP-Error: " + response.status)
+    }
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
