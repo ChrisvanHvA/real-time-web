@@ -23,13 +23,13 @@
 
 body {
 	font-family: 'Reality Goals';
-	font-size: 20px;
+	font-size: 14px;
 	overflow: hidden; /* Hide scrollbars */
 
 }
 h1 {
 	font-weight: lighter;
-	font-size: 6em;
+	font-size: 4em;
 }
 section.roomname h1, h2 {
 	text-align: center;
@@ -38,7 +38,7 @@ section.roomname h1, h2 {
 	filter: drop-shadow(0px 0px 20px #0ba6ff6d);
 }
 section.roomname h2 {
-	font-size: 6em;
+	font-size: 3em;
 }
 .bgimage {
 	position:absolute;
@@ -65,13 +65,13 @@ padding: 0.5em;
 
 }
 ul.userimages li p {
-	font-size: 1.5em;
+	font-size: 2em;
 
 	
 }
 ul.userimages li img {
-width: 6em;
-height: 6em;
+width: 5em;
+height: 5em;
 border-radius: 50%;
 border: 3px solid rgb(255, 255, 255);
 }
@@ -101,7 +101,7 @@ a {
 	background: rgb(87, 203, 67);
 	color: black;
 	border: 0;
-	font-size: 20px;
+	font-size: 14px;
 	font-family: reality goals;
 	font-weight: lighter;
 	border-radius: 0.5em;
@@ -112,7 +112,7 @@ a {
 .chat-container {
 	border: 2px solid rgb(0, 0, 0);
 	border-radius: 1em;
-	width: 1100px;
+	width: 1000px;
 	max-width: 100%;
 	height: 45vh;
 	background: #00000095;
@@ -146,9 +146,9 @@ a {
 
 
 .chat-messages {
-	padding: 30px;
-	min-height: 400px;
-	max-height: 45vh;
+	padding: 20px;
+	min-height: 300px;
+	max-height: 35vh;
 	overflow-y: scroll;
 	color: rgb(9, 112, 0);
 	font-weight: bold;
@@ -172,7 +172,7 @@ a {
 }
 
 .chat-messages .message .meta {
-	font-size: 15px;
+	font-size: 12px;
 
 	color: black;
 	opacity: 0.7;
@@ -190,7 +190,7 @@ a {
 	color: red;
 }
 .chat-form-container {
-	width: 1100px;
+	width: 1000px;
 	max-width: 100%;
 
 
@@ -208,7 +208,7 @@ padding: 3em 1em 3em 1em;
 }
 
 .chat-form-container input[type='text'] {
-	font-size: 20px;
+	font-size: 14px;
 	padding: 5px;
 	height: 40px;
 	flex: 1;
@@ -219,7 +219,7 @@ margin-right: 1em;
 
 /* Join Page */
 .join-container {
-	max-width: 800px;
+	max-width: 600px;
 	margin: 80px auto;
 	color: #fff;
 	
