@@ -5,6 +5,7 @@ const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
 
 
+
 // Get username and room from URL
 let { username, room, beast} = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
@@ -92,7 +93,7 @@ function outputMessage(message) {
   div.classList.add('message');
 
   console.log(message);
-
+cleanchat();
   const p = document.createElement('p');
   p.classList.add('meta');
 
@@ -147,9 +148,7 @@ function addleave() {
 document.getElementById("catbutton").addEventListener("click", load_pic);
 
   async function load_pic() {
-
     const url = 'https://cataas.com/cat'
-
     const options = {
         method: "GET"
     }
@@ -166,10 +165,22 @@ document.getElementById("catbutton").addEventListener("click", load_pic);
        
         const container = document.querySelector('.chat-messages')
         container.append(image)
-   
-    }
+       cleanchat();
+  }
     else {
         console.log("HTTP-Error: " + response.status)
     }
     chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function cleanchat() {
+  var numb = document.querySelector('.chat-messages').childElementCount;
+maxnumb = document.querySelector('.chat-messages');
+  console.log(numb);
+
+if (numb > 19) {
+maxnumb.removeChild(maxnumb.firstChild);
+console.log("cleaning messages");
+ } else {
+console.log("cleaning messages soon");
+}
 }
