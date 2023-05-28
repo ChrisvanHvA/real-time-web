@@ -19,14 +19,10 @@ io.on('connection', socket => {
     let currentUser;
 
     socket.on('joinRoom', ({username, room, beast}) => {
-
         const user = userJoin(socket.id, username, room, beast);
         socket.join(user.room);
-
         currentUser = username;
-
         socket.emit('message',  { currentUser: currentUser, messageObject:  formatMessage(botname,'kom maar lekker chillen makker!')});
-
         socket.broadcast.to(user.room).emit('message', { currentUser: currentUser, messageObject: formatMessage(botname,`beestje ${user.username} is aanwezig!`)});
         io.to(user.room).emit('roomUsers', {
             room: user.room,
