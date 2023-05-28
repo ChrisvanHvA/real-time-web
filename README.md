@@ -2,19 +2,53 @@
 ## a Course at the HVA to create a web app with real time functionality
 
 # Beasties!
+![image](https://github.com/ChrisvanHvA/real-time-web/assets/90341211/6c31f2f7-5b62-41af-934e-b5c06a1fdff4)
 
-## Chat met je vrienden op een leuke wijze door je te gedragen als een diertje, stuur kattenplaatjes en maak eindeloze gesprekken in deze leuke chat app!
+## Beschrijving
+Met deze applicatie kan je in de thema van een paar dieren in een denkbeeldig bos chillen en praten met andere dieren, het bos is verdeelt in een paar gebieden die rooms zijn, waardoor je ook in privacy kan praten.  
+je kan ook door middel van de kattenhoofd willekeurige plaatjes van katten sturen om de humeur te verbeteren of juist om iemand te irriteren.
+In het bos zal je bernard boom tegen komen die je verteld wanneer mensen joinen en leaven, ook zal hij je welkom heten wanneer je een room joint.
 
 
-link naar app: https://real-time-web-production.up.railway.app/
+[link naar de Railway hosted app](https://real-time-web-production.up.railway.app/)
+
 
 ### Functionaliteiten:
-
 -Username aanmaken
 -Chatrooms kiezen 
 -Rol aan jezelf assignen
 -Katten images posten via een API
--van chatrooms wisselen
+-Van chatrooms wisselen
+
+### Functies die er aan de backside gebeuren
+-Opslaan van users in een array
+-Verwijderen van oude berichten
+-Sturen van een welkomstbericht aan alleen nieuwe users
+-Sturen van een bericht wanneer een nieuwe user joined
+-Sturen van een bericht wanneer iemand de Room verlaat
+-De naam van de room boven aan het scherm laten zien
+-Fetchen van afbeeldingen met de api en deze posten.
+-Rollen van users onthouden en hun namen aanpassen op basis hiervan.
+
+
+## Hoe installeer ik het?
+
+### Clone deze repo
+
+```bash
+git clone [git@github.com:ChrisvanHvA/real-time-web.git
+```
+
+### Installeer de dependencies
+
+```bash
+npm install
+```
+
+### Run de applicatie op je localhost
+```bash
+npm start
+```
 
 ## Concept
 
@@ -23,6 +57,7 @@ Het tweede idee dat ik kreeg was om een chat app te maken waarbij je bepaalde ch
 
 Uitendelijk besloot ik om een bos te maken waarin je een dier kan zijn en tegen andere dieren kan praten.
 de applicatie heet daarom ook Beasties! (mix tussen besties en beasts).
+
 
 ### Reflectie
 
