@@ -109,6 +109,11 @@ er wordt eerst een call gemaakt naar de API om image te krijgen, daarna wordt er
 
 ![image](https://github.com/ChrisvanHvA/real-time-web/assets/90341211/197926ab-f012-464b-a8e3-3b1633f50f3b)
 
+## Data model - API
+De API die ik gebruik heet "cats as a service", deze API laat je random katten fotos ophalen in een paar categorieën, de enige die ik relevant vondt voor mijn concept was eentje die alle katten images ophaalde, door een fetch te doen naar de API kan ik de links krijgen naar deze katten en ze daarna in een image element zetten met JS.  
+Ook al is mijn API vrij simpel heb ik alsnog een data model gemaakt die de API call visualiseerd.
+![image](https://github.com/ChrisvanHvA/real-time-web/assets/90341211/36c0c4bf-1288-4c0b-affa-3542b5faea88)
+
 ## Reflectie
 
 Van de functionaliteiten die ik wou toevoegen ben ik nog vrij positief, ik heb wel gemerkt dat ik vaak tegen een metaforische muur aanliep waarbij ik niet meer wist hoe ik verder moest werken om een bepaalde functie toe te voegen, maar als iemand met vrijwel geen ervaring in dit vakgebied begreep ik wel waarom en was dit niet een grote frustratie. 
