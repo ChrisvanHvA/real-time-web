@@ -83,21 +83,21 @@ In de tweede versie van de Chatroom zijn de berichten mooier gestyled, de tijd s
 
 ### Technische functionaliteiten
 
-Berichten sturen: 
+Berichten sturen:  
 Door middel van een function die een div element maakt, wordt het bericht ontwikkeld met de verstuurde informatie uit de textarea, samen met de username en gekozen diersoort, als er geen diersoort is (door bijvoorbeeld de chatbot) dan zal dit opgevangen worden in de if/else condition.
 ![image](https://github.com/ChrisvanHvA/real-time-web/assets/90341211/fec8e260-3ae2-4b45-ab9f-267cf764d9da)
 
-Users toevoegen: 
+Users toevoegen:  
 Door middel van een function die de alle users opslaat in een array met hun username en "dier tag" worden de gebruikers bewaard en later weer opgestuurd naar users die joinen.
 ![image](https://github.com/ChrisvanHvA/real-time-web/assets/90341211/3cfb7284-7a17-413f-90bf-35eb9493f151)
 
-Chat opschonen: 
+Chat opschonen:  
 De applicatie checked hoeveel div elementen (children) er in de DOM worden geplaatst, als dit er meer dan 20 zijn dan verwijdert hij het oudste bericht zodat de site niet te zwaar wordt voor gebruikers. ![image](https://github.com/ChrisvanHvA/real-time-web/assets/90341211/86adf434-5a0a-4bf6-8df8-16ec5a9b0932)
 
-Room joinen, socket reactie: 
+Room joinen, socket reactie:  
 Wanneer je een room joined zijn er een paar berichten die via de socket gestuurd worden, je ontvangt zelf het een bericht van de bot door "socket.emit" naar de current user, en de rest krijgen een bericht van de bot door "socket.broadcast" naar alle users in dezelfde room. ![image](https://github.com/ChrisvanHvA/real-time-web/assets/90341211/9ef123ad-8a34-4b64-9acb-fa3ee0fe1072)
 
-API afbeeldingen: 
+API afbeeldingen:  
 door middel van een functie die getriggered wordt met een event listener worden er katten plaatjes ingeladen. 
 er wordt eerst een call gemaakt naar de API om image te krijgen, daarna wordt er een image element gemaakt die de url krijgt van de API. ![image](https://github.com/ChrisvanHvA/real-time-web/assets/90341211/197926ab-f012-464b-a8e3-3b1633f50f3b)
 
