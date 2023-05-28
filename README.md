@@ -14,21 +14,21 @@ In het bos zal je bernard boom tegen komen die je verteld wanneer mensen joinen 
 
 
 ### Functionaliteiten:
--Username aanmaken
--Chatrooms kiezen 
--Rol aan jezelf assignen
--Katten images posten via een API
--Van chatrooms wisselen
+- Username aanmaken
+- Chatrooms kiezen 
+- Rol aan jezelf assignen
+- Katten images posten via een API
+- Van chatrooms wisselen
 
 ### Functies die er aan de backside gebeuren
--Opslaan van users in een array
--Verwijderen van oude berichten
--Sturen van een welkomstbericht aan alleen nieuwe users
--Sturen van een bericht wanneer een nieuwe user joined
--Sturen van een bericht wanneer iemand de Room verlaat
--De naam van de room boven aan het scherm laten zien
--Fetchen van afbeeldingen met de api en deze posten.
--Rollen van users onthouden en hun namen aanpassen op basis hiervan.
+- Opslaan van users in een array
+- Verwijderen van oude berichten
+- Sturen van een welkomstbericht aan alleen nieuwe users
+- Sturen van een bericht wanneer een nieuwe user joined
+- Sturen van een bericht wanneer iemand de Room verlaat
+- De naam van de room boven aan het scherm laten zien
+- Fetchen van afbeeldingen met de api en deze posten.
+- Rollen van users onthouden en hun namen aanpassen op basis hiervan.
 
 
 ## Hoe installeer ik het?
@@ -36,7 +36,7 @@ In het bos zal je bernard boom tegen komen die je verteld wanneer mensen joinen 
 ### Clone deze repo
 
 ```bash
-git clone [git@github.com:ChrisvanHvA/real-time-web.git
+git clone [github link]
 ```
 
 ### Installeer de dependencies
