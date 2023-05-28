@@ -112,7 +112,26 @@ er wordt eerst een call gemaakt naar de API om image te krijgen, daarna wordt er
 ## Data model - API
 De API die ik gebruik heet "cats as a service", deze API laat je random katten fotos ophalen in een paar categorieën, de enige die ik relevant vondt voor mijn concept was eentje die alle katten images ophaalde, door een fetch te doen naar de API kan ik de links krijgen naar deze katten en ze daarna in een image element zetten met JS.  
 Ook al is mijn API vrij simpel heb ik alsnog een data model gemaakt die de API call visualiseerd.
+
 ![image](https://github.com/ChrisvanHvA/real-time-web/assets/90341211/36c0c4bf-1288-4c0b-affa-3542b5faea88)
+
+## Real time evenementen:
+| Event name | Description | Emit | Listen |
+| --- | --- | --- | --- |
+| connectie | Establishes connection | Client | Server |
+| updateOnlineUsers | Bijhouden van nieuwe users| Server | Client |
+| Fetch API | connectie met API maken| Client | Server |
+| API GET data | Img url ontvangen en sturen | Server | Client |
+| newUser | Nieuwe user  joinen | Client | Server |
+| Broadcast new user| mededelen van nieuwe user | server | client |
+| disconnect | verbreekt connectie | Client | Server |
+| disconnect notificatie | laat mensen weten dat iemand weg is | Server | Client |
+
+
+## Data life cycle Diagram
+In de lifecycle diagram laat ik zien hoe de data binnen de applicatie rond gestuurd wordt van de socket naar de server en terug naar de client, om te verduidelijken wat er binnen mijn code gebeurd wanneer users actief bezig zijn op de applicatie.
+![image](https://github.com/ChrisvanHvA/real-time-web/assets/90341211/99654bd5-55a0-4fc7-bef1-345225827473)
+
 
 ## Reflectie
 
